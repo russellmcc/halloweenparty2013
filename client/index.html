@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="http://fonts.googleapis.com/css?family=Ubuntu+Condensed" rel="stylesheet" type="text/css" />
+    <link href='style/app.css' rel='stylesheet' type='text/css'/>
+    <meta name="viewport" content="width=device-width"/>
+      <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+      <meta name="apple-mobile-web-app-capable" content="yeps"/>
+      <meta name="format-detection" content="telephone=no"/>
+
+	<script type="text/javascript" data-main="src/main" src="src/require-jquery.js"></script>
+    <script type="text/javascript" src="src/jquery.kontrol.js"></script>
+    <script type="text/javascript" src="src/underscore-min.js"></script>
+    <script type="text/javascript" src="src/backbone-min.js"></script>
+    <script type="text/javascript" src="socket.io/socket.io.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div id="machine">
+      <div class='sec'>
+        <h2>filter</h2>
+          <input id="filter" type="text" value='50'></input>
+      </div>
+      <div class= 'sec'>
+        <h2>airhorn</h2>
+        <div class="button" id="airhorn"></div>
+      </div>
+      <div>
+        <h2>glitch</h2>
+        <fieldset id="glitch">
+          <input class="glitch" type="text" value='50'></input>
+          <input class="glitch" type="text" value='50'></input>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

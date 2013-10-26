@@ -1,0 +1,30 @@
+{
+   "name": "halloween",
+   "version": "0.0.0",
+   "author": {
+       "name" : "Russell McClellan",
+       "email": "russell.mcclellan@gmail.com",
+       "url" : "http://www.ghostfact.com"
+   },
+   "description": "halloween party control",
+   "repository" : {
+       "type": "git",
+       "url": "http://github.com/russellmcc/halloweenparty2013.git"
+   },
+   "dependencies" : {
+       "express.io" : "*",
+       "coffee-script": "*",
+       "osc-min": "*",
+       "requirejs" : "*"
+   },
+   "directories": {
+   },
+   "engines": {
+       "node": ">=0.3.0"
+   },
+   "scripts": {
+       "start": "coffee server.coffee",
+       "debug": "coffee server.coffee debug",
+       "build": "cd client; ./build.sh"
+   }
+}
