@@ -13,18 +13,18 @@ div {
 }
 body {
     font-size: 2em;
-    background: #CCA19A;
+    background: #130912;
     font-family: 'Ubuntu Condensed';
     font-weight: normal;
     text-align: center;
-    color: #360F24;
+    color: #b14623;
     -webkit-user-select: none;
     user-select: none;
 }
 
 .button
 {
-    background:#AF7C83;
+    background:#3e1c33;
     width:50px;
     height:50px;
     min-width:50px;
@@ -39,11 +39,11 @@ body {
 }
 .button:hover
 {
-    background:#90465D;
+    background:#602749;
 }
 .button:active, .button.active
 {
-    background:#360F24;
+    background:#b14623;
 }
 .sec
 {
