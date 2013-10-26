@@ -11,6 +11,11 @@ div {
     text-align: center;
     margin: auto;
 }
+h2 {
+    display: inline-block;
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
 body {
     font-size: 2em;
     background: #130912;
