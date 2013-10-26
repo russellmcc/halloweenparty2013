@@ -91,3 +91,5 @@ define [], () -> -> $ ->
       @$.val v
       @$.trigger 'change'
   new Dial('filter')
+
+  socket.emit 'login', prompt "what's the password?"

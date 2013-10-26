@@ -1,3 +1,5 @@
+keycode = 'nightmare'
+
 debug = process.argv.length > 2
 
 express = require 'express.io'
@@ -29,8 +31,13 @@ sendOSC = (address, val) ->
   }
   udp.send buf, 0, buf.length, 8000, 'localhost'
 
+app.io.route 'login', (req) ->
+  if req.data is keycode
+    req.socket.stupidAuth = true
+
 for k in ['airhorn', 'filter', 'glitch'] then do (k) =>
   app.io.route k, (req) ->
+    return unless req.socket.stupidAuth
     req.io.broadcast k, req.data
     if req.data.action is 'move'
       if typeof req.data.value isnt 'object'
