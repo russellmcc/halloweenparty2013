@@ -1,4 +1,4 @@
-keycode = 'nightmare'
+keycode = 'elm'
 
 debug = process.argv.length > 2
 
@@ -32,7 +32,7 @@ sendOSC = (address, val) ->
   udp.send buf, 0, buf.length, 8000, 'localhost'
 
 app.io.route 'login', (req) ->
-  if req.data is keycode
+  if req.data.toLowerCase?() is keycode
     req.socket.stupidAuth = true
 
 for k in ['airhorn', 'filter', 'glitch'] then do (k) =>
