@@ -7,14 +7,20 @@ text-decoration: none;
 font-weight: normal;
 color: inherit;
 }
+#machine {
+    margin-top: 15px;
+
+}
 div {
     text-align: center;
     margin: auto;
 }
 h2 {
+    margin-bottom: 10px;
+}
+.headers > h2 {
     display: inline-block;
     margin-left: 20px;
-    margin-bottom: 15px;
 }
 body {
     font-size: 2em;

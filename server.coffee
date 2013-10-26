@@ -1,3 +1,5 @@
+debug = process.argv.length > 2
+
 express = require 'express.io'
 http = require 'http'
 osc = require 'osc-min'
@@ -7,11 +9,14 @@ udp = dgram.createSocket 'udp4'
 
 app = express()
 app.http().io()
+app.use (req, res, next) ->
+  req.headers['if-none-match'] = 'no-match-for-this'
+  next()
 
 app.use express.bodyParser()
 
 app.use express.static(
-  if process.argv.length > 2
+  if debug
     "#{process.cwd()}/client"
   else
     "#{process.cwd()}/client/build"
@@ -36,4 +41,4 @@ for k in ['airhorn', 'filter', 'glitch'] then do (k) =>
       sendOSC "#{k}/active", 1
     if req.data.action is 'end'
       sendOSC "#{k}/active", 0
-app.listen 80
+app.listen if debug then 8080 else 80

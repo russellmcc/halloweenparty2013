@@ -1,6 +1,6 @@
 define [], () -> -> $ ->
   socket = io.connect()
-
+  $(document).bind 'touchmove', false
   $('#airhorn').bind 'mousedown touchstart', ->
     socket.emit 'airhorn', {action:'start'}
     $(document).bind 'mouseup touchend', ->
@@ -41,8 +41,8 @@ define [], () -> -> $ ->
         cancel: @end
         change: @move
         fgColor: '#602749'
-        height: 128
-        width: 128
+        height: 100
+        width: 100
         min: 0
         max: 128
         displayInput: off
