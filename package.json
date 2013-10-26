@@ -15,7 +15,8 @@
        "express.io" : "*",
        "coffee-script": "*",
        "osc-min": "*",
-       "requirejs" : "*"
+       "requirejs" : "*",
+       "binpack": "*"
    },
    "directories": {
    },

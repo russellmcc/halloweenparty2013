@@ -6,6 +6,7 @@ express = require 'express.io'
 http = require 'http'
 osc = require 'osc-min'
 dgram = require 'dgram'
+binpack = require 'binpack'
 
 udp = dgram.createSocket 'udp4'
 
@@ -35,6 +36,17 @@ app.io.route 'login', (req) ->
   if req.data?.toLowerCase?() is keycode
     req.socket.stupidAuth = true
 
+lastLight = 50
+sendLight = (p) ->
+  udp.send (binpack.packUInt8 p), 0, 1, 8001, '192.168.1.112'
+startLight = ->
+  sendLight lastLight
+moveLight = (v)->
+  lastLight = v
+  sendLight v
+endLight = ->
+  sendLight 0
+
 for k in ['airhorn', 'filter', 'glitch'] then do (k) =>
   app.io.route k, (req) ->
     return unless req.socket.stupidAuth
@@ -44,8 +56,12 @@ for k in ['airhorn', 'filter', 'glitch'] then do (k) =>
         req.data.value = {value: req.data.value}
       for key, v of req.data.value
         sendOSC "#{k}/#{key}", +v/128
+      moveLight(req.data.value[0]) if k is 'glitch'
     if req.data.action is 'start'
       sendOSC "#{k}/active", 1
+      startLight()
     if req.data.action is 'end'
       sendOSC "#{k}/active", 0
+      endLight()
+      
 app.listen if debug then 8080 else 69
