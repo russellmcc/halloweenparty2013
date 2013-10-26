@@ -31,6 +31,9 @@ define [], () -> -> $ ->
       @currVal = v
       @send()
 
+  fgColor = '#eaff50'
+  bgColor = '#ff0063'
+  
   class XY extends Controllable
     constructor: (id) ->
       super(id)
@@ -40,7 +43,7 @@ define [], () -> -> $ ->
         release: @end
         cancel: @end
         change: @move
-        fgColor: '#602749'
+        fgColor: bgColor
         height: 100
         width: 100
         min: 0
@@ -48,7 +51,7 @@ define [], () -> -> $ ->
         displayInput: off
       }
       @elem.css
-        border: '5px solid #3e1c33'
+        border: "5px solid #{bgColor}"
         'border-radius': '10px'
     start: ->
       @peerstart()
@@ -57,9 +60,9 @@ define [], () -> -> $ ->
       @peerend()
       super()
     peerstart: ->
-      @$.trigger 'configure', fgColor: '#b14623'
+      @$.trigger 'configure', fgColor: fgColor
     peerend: ->
-      @$.trigger 'configure', fgColor: '#602749'
+      @$.trigger 'configure', fgColor: bgColor
     peermove: (v) ->
       @$.find('input').each (k) ->
         $(@).val v[k]
@@ -72,8 +75,8 @@ define [], () -> -> $ ->
       super(id)
       @$ = $("##{id}")
       elem = @$.dial
-        fgColor: '#b14623'
-        bgColor: '#3e1c33'
+        fgColor: fgColor
+        bgColor: bgColor
         angleArc:270
         angleOffset:225
         flatMouse: on

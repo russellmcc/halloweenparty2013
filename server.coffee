@@ -48,4 +48,4 @@ for k in ['airhorn', 'filter', 'glitch'] then do (k) =>
       sendOSC "#{k}/active", 1
     if req.data.action is 'end'
       sendOSC "#{k}/active", 0
-app.listen if debug then 8080 else 80
+app.listen if debug then 8080 else 69

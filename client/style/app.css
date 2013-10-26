@@ -24,18 +24,18 @@ h2 {
 }
 body {
     font-size: 2em;
-    background: #130912;
+    background: #060106;
     font-family: 'Ubuntu Condensed';
     font-weight: normal;
     text-align: center;
-    color: #b14623;
+    color: #eaff50;
     -webkit-user-select: none;
     user-select: none;
 }
 
 .button
 {
-    background:#3e1c33;
+    background:#ff0063;
     width:50px;
     height:50px;
     min-width:50px;
@@ -47,13 +47,9 @@ body {
     position: relative;
     line-height: 0;
 }
-.button:hover
-{
-    background:#602749;
-}
 .button:active, .button.active
 {
-    background:#b14623;
+    background:#eaff50;
 }
 .sec
 {
