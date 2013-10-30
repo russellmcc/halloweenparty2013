@@ -1,7 +1,8 @@
 define [], () -> -> $ ->
   socket = io.connect()
   $(document).bind 'touchmove', false
-  $('#airhorn').bind 'mousedown touchstart', ->
+  $('#airhorn').bind 'mousedown touchstart', (e) ->
+    e.preventDefault()
     socket.emit 'airhorn', {action:'start'}
     $(document).bind 'mouseup touchend', ->
       $(document).unbind 'mouseup touchend'
@@ -28,8 +29,9 @@ define [], () -> -> $ ->
       @controlling = false
       socket.emit "#{@id}", {action: 'end'}
     move: (v) =>
-      @currVal = v
-      @send()
+      if @controlling
+        @currVal = v
+        @send()
 
   fgColor = '#eaff50'
   bgColor = '#ff0063'

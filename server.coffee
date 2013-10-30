@@ -45,7 +45,9 @@ moveLight = (v)->
   lastLight = v
   sendLight v
 endLight = ->
-  sendLight 0
+  setTimeout (-> sendLight 200), 100
+airhornLight = ->
+  sendLight 255
 
 for k in ['airhorn', 'filter', 'glitch'] then do (k) =>
   app.io.route k, (req) ->
@@ -59,9 +61,10 @@ for k in ['airhorn', 'filter', 'glitch'] then do (k) =>
       moveLight(req.data.value[0]) if k is 'glitch'
     if req.data.action is 'start'
       sendOSC "#{k}/active", 1
-      startLight()
+      startLight() if k is 'glitch'
+      airhornLight() if k is 'airhorn'
     if req.data.action is 'end'
       sendOSC "#{k}/active", 0
-      endLight()
+      endLight() if k is 'glitch'
       
 app.listen if debug then 8080 else 69
